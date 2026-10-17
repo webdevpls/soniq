@@ -14,9 +14,17 @@ curl -fsSL https://raw.githubusercontent.com/webdevpls/soniq/main/install.sh | b
 
 Pronto: o Soniq é instalado em Aplicativos e abre sozinho, sem aviso de segurança.
 
-### Opção 2: pelo DMG
+### Opção 2: DMG pelo Terminal (sem aviso)
 
-1. Abra o **Soniq-x.y.z.dmg**. O macOS mostra *"não foi aberto"*: clique em **Concluído**.
+```
+curl -fL -o ~/Downloads/Soniq.dmg https://github.com/webdevpls/soniq/releases/latest/download/Soniq.dmg && open ~/Downloads/Soniq.dmg
+```
+
+Na janela que abrir, arraste o **Soniq** para **Applications**.
+
+### Opção 3: DMG pelo navegador
+
+1. Abra o **Soniq.dmg**. O macOS mostra *"não foi aberto"*: clique em **Concluído**.
 2. Vá em **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim**. Confirme com a sua senha.
 3. Abra o DMG de novo e arraste o **Soniq** para **Applications** (Aplicativos).
 4. Abra o Soniq. Se o aviso aparecer para o app, repita o passo 2.
@@ -45,7 +53,9 @@ Guia completo: https://github.com/webdevpls/soniq
 
 **Easiest:** paste this in Terminal: `curl -fsSL https://raw.githubusercontent.com/webdevpls/soniq/main/install.sh | bash`
 
-**DMG:** open **Soniq-x.y.z.dmg**. If macOS says it wasn't opened, click **Done**, go to **System Settings → Privacy & Security → Open Anyway**, then drag **Soniq** into **Applications**. Soniq lives in the **menu bar**.
+**DMG without the prompt:** `curl -fL -o ~/Downloads/Soniq.dmg https://github.com/webdevpls/soniq/releases/latest/download/Soniq.dmg && open ~/Downloads/Soniq.dmg`
+
+**DMG from the browser:** open **Soniq.dmg**. If macOS says it wasn't opened, click **Done**, go to **System Settings → Privacy & Security → Open Anyway**, then drag **Soniq** into **Applications**. Soniq lives in the **menu bar**.
 
 Allow **System Audio Recording** the first time you use boost, an effect or per-app volume. Nothing is recorded or stored.
 

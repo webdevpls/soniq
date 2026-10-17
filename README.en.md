@@ -90,11 +90,20 @@ It downloads the latest release, installs Soniq into **Applications** and opens 
 
 ### Option 2: DMG installer
 
-1. Download **`Soniq-x.y.z.dmg`** from the [latest release](https://github.com/webdevpls/soniq/releases/latest).
-2. When you open it, macOS says *"Soniq-x.y.z.dmg" Not Opened*. Click **Done**.
-3. Go to **System Settings → Privacy & Security**, scroll down and click **Open Anyway** next to Soniq. Confirm with your password.
-4. With the DMG open, drag **Soniq** into **Applications**.
-5. Open Soniq. If the prompt appears again for the app, repeat step 3.
+To download and open the DMG **without the security prompt**, paste this in Terminal:
+
+```sh
+curl -fL -o ~/Downloads/Soniq.dmg https://github.com/webdevpls/soniq/releases/latest/download/Soniq.dmg && open ~/Downloads/Soniq.dmg
+```
+
+In the window that opens, drag **Soniq** into **Applications**.
+
+**From the browser:** download [**Soniq.dmg**](https://github.com/webdevpls/soniq/releases/latest/download/Soniq.dmg). macOS blocks it the first time:
+
+1. When you open it, macOS says *"Soniq.dmg" Not Opened*. Click **Done**.
+2. Go to **System Settings → Privacy & Security**, scroll down and click **Open Anyway** next to Soniq. Confirm with your password.
+3. With the DMG open, drag **Soniq** into **Applications**.
+4. Open Soniq. If the prompt appears again for the app, repeat step 2.
 
 Soniq lives in the **menu bar**, not in the Dock.
 

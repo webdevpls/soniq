@@ -91,11 +91,20 @@ O script baixa a última versão, instala o Soniq em **Aplicativos** e abre o ap
 
 ### Opção 2: instalador DMG
 
-1. Baixe o **`Soniq-x.y.z.dmg`** na [última versão](https://github.com/webdevpls/soniq/releases/latest).
-2. Ao abrir, o macOS mostra *"Soniq-x.y.z.dmg" não foi aberto*. Clique em **Concluído**.
-3. Vá em **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim** ao lado do Soniq. Confirme com a sua senha.
-4. Com o DMG aberto, arraste o **Soniq** para a pasta **Aplicativos**.
-5. Abra o Soniq. Se o aviso aparecer de novo para o app, repita o passo 3.
+Para baixar e abrir o DMG **sem aviso de segurança**, cole no Terminal:
+
+```sh
+curl -fL -o ~/Downloads/Soniq.dmg https://github.com/webdevpls/soniq/releases/latest/download/Soniq.dmg && open ~/Downloads/Soniq.dmg
+```
+
+Na janela que abrir, arraste o **Soniq** para **Applications** (Aplicativos).
+
+**Pelo navegador:** baixe o [**Soniq.dmg**](https://github.com/webdevpls/soniq/releases/latest/download/Soniq.dmg). Nesse caso o macOS bloqueia na primeira vez:
+
+1. Ao abrir, o macOS mostra *"Soniq.dmg" não foi aberto*. Clique em **Concluído**.
+2. Vá em **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim** ao lado do Soniq. Confirme com a sua senha.
+3. Com o DMG aberto, arraste o **Soniq** para a pasta **Aplicativos**.
+4. Abra o Soniq. Se o aviso aparecer de novo para o app, repita o passo 2.
 
 O ícone aparece na **barra de menus**, não no Dock.
 

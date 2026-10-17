@@ -27,15 +27,16 @@ fi
 codesign --force --options runtime --timestamp=none --sign "${SIGN_IDENTITY:--}" "$APP"
 
 mkdir -p dist
-rm -f "dist/Soniq-$VERSION.zip"
-ditto -c -k --keepParent "$APP" "dist/Soniq-$VERSION.zip"
+# Asset names carry no version so releases/latest/download/<name> is a permanent link.
+rm -f dist/Soniq.zip
+ditto -c -k --keepParent "$APP" dist/Soniq.zip
 # Disk image with the usual "drag to Applications" layout.
 STAGE="$(mktemp -d)"
 cp -R "$APP" "$STAGE/"
 ln -s /Applications "$STAGE/Applications"
-rm -f "dist/Soniq-$VERSION.dmg"
-hdiutil create -quiet -volname "Soniq" -srcfolder "$STAGE" -fs HFS+ -format UDZO "dist/Soniq-$VERSION.dmg"
+rm -f dist/Soniq.dmg
+hdiutil create -quiet -volname "Soniq" -srcfolder "$STAGE" -fs HFS+ -format UDZO dist/Soniq.dmg
 rm -rf "$STAGE"
-codesign --force --timestamp=none --sign "${SIGN_IDENTITY:--}" "dist/Soniq-$VERSION.dmg"
+codesign --force --timestamp=none --sign "${SIGN_IDENTITY:--}" dist/Soniq.dmg
 
-echo "Built $APP (v$VERSION), dist/Soniq-$VERSION.zip and dist/Soniq-$VERSION.dmg"
+echo "Built $APP (v$VERSION), dist/Soniq.zip and dist/Soniq.dmg"
