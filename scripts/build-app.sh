@@ -39,4 +39,7 @@ hdiutil create -quiet -volname "Soniq" -srcfolder "$STAGE" -fs HFS+ -format UDZO
 rm -rf "$STAGE"
 codesign --force --timestamp=none --sign "${SIGN_IDENTITY:--}" dist/Soniq.dmg
 
-echo "Built $APP (v$VERSION), dist/Soniq.zip and dist/Soniq.dmg"
+# Checksums for the release; install.sh verifies Soniq.zip against them.
+(cd dist && shasum -a 256 Soniq.zip Soniq.dmg > SHA256SUMS.txt)
+
+echo "Built $APP (v$VERSION), dist/Soniq.zip, dist/Soniq.dmg and dist/SHA256SUMS.txt"

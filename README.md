@@ -375,6 +375,10 @@ Tem uma ideia? [Sugira um recurso](https://github.com/webdevpls/soniq/issues/new
 
 Relatos de bug, ideias e pull requests são bem-vindos. Leia o [CONTRIBUTING.md](CONTRIBUTING.md) para começar.
 
+## Segurança
+
+Encontrou uma falha de segurança? Não abra uma issue pública: veja o [SECURITY.md](SECURITY.md). Cada release traz o `SHA256SUMS.txt`, e o instalador confere a soma e a assinatura do app antes de instalar.
+
 ## Licença e marca
 
 O Soniq é software livre sob a **[Licença Pública Geral GNU v3.0](LICENSE)** (GPL-3.0). Você pode usar, estudar, compartilhar e modificar. Se distribuir uma versão modificada, ela também precisa ser lançada sob a GPL-3.0, com o código-fonte.

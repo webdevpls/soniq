@@ -369,6 +369,10 @@ Have an idea? [Open a feature request](https://github.com/webdevpls/soniq/issues
 
 Bug reports, ideas and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
 
+## Security
+
+Found a vulnerability? Don't open a public issue: see [SECURITY.md](SECURITY.md). Every release ships `SHA256SUMS.txt`, and the installer checks it and the app signature before installing.
+
 ## License & trademark
 
 Soniq is free software released under the **[GNU General Public License v3.0](LICENSE)**. You can use, study, share and modify it. If you distribute a modified version, it must also be released under the GPL-3.0 with its source code.
