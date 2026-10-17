@@ -29,4 +29,13 @@ codesign --force --options runtime --timestamp=none --sign "${SIGN_IDENTITY:--}"
 mkdir -p dist
 rm -f "dist/Soniq-$VERSION.zip"
 ditto -c -k --keepParent "$APP" "dist/Soniq-$VERSION.zip"
-echo "Built $APP (v$VERSION) and dist/Soniq-$VERSION.zip"
+# Disk image with the usual "drag to Applications" layout.
+STAGE="$(mktemp -d)"
+cp -R "$APP" "$STAGE/"
+ln -s /Applications "$STAGE/Applications"
+rm -f "dist/Soniq-$VERSION.dmg"
+hdiutil create -quiet -volname "Soniq" -srcfolder "$STAGE" -fs HFS+ -format UDZO "dist/Soniq-$VERSION.dmg"
+rm -rf "$STAGE"
+codesign --force --timestamp=none --sign "${SIGN_IDENTITY:--}" "dist/Soniq-$VERSION.dmg"
+
+echo "Built $APP (v$VERSION), dist/Soniq-$VERSION.zip and dist/Soniq-$VERSION.dmg"

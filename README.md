@@ -81,8 +81,8 @@
 
 ### Download (recomendado)
 
-1. Baixe o **`Soniq-x.y.z.zip`** na [última versão](https://github.com/webdevpls/soniq/releases/latest).
-2. Descompacte e arraste o **Soniq.app** para a pasta **Aplicativos**.
+1. Baixe o **`Soniq-x.y.z.dmg`** (recomendado) na [última versão](https://github.com/webdevpls/soniq/releases/latest).
+2. Abra o DMG e arraste o **Soniq** para a pasta **Aplicativos**. (Também há um `.zip`, se preferir.)
 3. Abra o Soniq. O ícone aparece na barra de menus, não no Dock.
 
 > [!NOTE]
@@ -252,7 +252,7 @@ cd soniq
 # lembrar da permissão de áudio entre builds (senão ele pergunta a cada build).
 ./scripts/setup-signing.sh
 
-# Gera o Soniq.app universal em ./build e um zip em ./dist
+# Gera o Soniq.app universal em ./build e o .dmg e o .zip em ./dist
 ./scripts/build-app.sh
 open build/Soniq.app
 ```
@@ -260,7 +260,7 @@ open build/Soniq.app
 | Comando | Descrição |
 | --- | --- |
 | `swift build` | Build rápido de debug para checar se compila |
-| `./scripts/build-app.sh` | Build de release, pacote do app, assinatura e zip (`VERSION=1.2.3` define a versão) |
+| `./scripts/build-app.sh` | Build de release, pacote do app, assinatura, DMG e zip (`VERSION=1.2.3` define a versão) |
 | `swift scripts/make-icon.swift` | Gera de novo o ícone, o ícone da barra de menus e os logos a partir de `Resources/Brand` |
 | `SONIQ_DEBUG=1` | Variável de ambiente que mostra no console os níveis de áudio dos taps |
 

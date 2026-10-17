@@ -80,8 +80,8 @@
 
 ### Download (recommended)
 
-1. Download **`Soniq-x.y.z.zip`** from the [latest release](https://github.com/webdevpls/soniq/releases/latest).
-2. Unzip it and drag **Soniq.app** into your **Applications** folder.
+1. Download **`Soniq-x.y.z.dmg`** (recommended) from the [latest release](https://github.com/webdevpls/soniq/releases/latest).
+2. Open the DMG and drag **Soniq** into **Applications**. (A `.zip` is also available.)
 3. Open Soniq. Its icon appears in the menu bar, not in the Dock.
 
 > [!NOTE]
@@ -251,7 +251,7 @@ cd soniq
 # audio permission across rebuilds (otherwise it asks after every build).
 ./scripts/setup-signing.sh
 
-# Build a universal Soniq.app into ./build and a zip into ./dist
+# Build a universal Soniq.app into ./build and a .dmg and .zip into ./dist
 ./scripts/build-app.sh
 open build/Soniq.app
 ```
@@ -259,7 +259,7 @@ open build/Soniq.app
 | Command | Description |
 | --- | --- |
 | `swift build` | Quick debug build to check the code compiles |
-| `./scripts/build-app.sh` | Release build, app bundle, signing and zip (`VERSION=1.2.3` to set the version) |
+| `./scripts/build-app.sh` | Release build, app bundle, signing, DMG and zip (`VERSION=1.2.3` to set the version) |
 | `swift scripts/make-icon.swift` | Regenerates the app icon, menu bar icon and logos from `Resources/Brand` |
 | `SONIQ_DEBUG=1` | Environment variable that logs tap levels to the console |
 
