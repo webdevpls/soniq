@@ -111,6 +111,10 @@ struct SoniqView: View {
                         .font(.system(size: 11, weight: .semibold))
                         .contentTransition(.symbolEffect(.replace))
                 }
+                RoundButton(symbol: model.inputMuted ? "mic.slash.fill" : "mic.fill", size: 26,
+                            active: model.inputMuted, help: model.inputMuted ? "Unmute microphone" : "Mute microphone") {
+                    model.toggleInputMute()
+                }
                 pickerButton(.input)
             }
 
@@ -129,6 +133,18 @@ struct SoniqView: View {
                     .padding(.horizontal, 8)
                     .padding(.vertical, 3)
                     .help(L("Don't switch to a headset mic when it connects"))
+                    HStack {
+                        Text(L("Lock microphone level"))
+                            .font(.system(size: 11.5))
+                        Spacer()
+                        Toggle("", isOn: Binding(get: { model.lockInputLevel }, set: model.setLockInputLevel))
+                            .toggleStyle(.switch)
+                            .controlSize(.mini)
+                            .labelsHidden()
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 3)
+                    .help(L("Stop call apps from raising your mic level"))
                 }
             }
             }

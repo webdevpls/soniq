@@ -10,8 +10,12 @@
 "Boost" = "Boost";
 "Muted" = "Mudo";
 "Microphone" = "Microfone";
+"Mute microphone" = "Silenciar microfone";
+"Unmute microphone" = "Ativar microfone";
 "Output device" = "Dispositivo de saída";
 "Keep this microphone" = "Manter este microfone";
+"Lock microphone level" = "Travar nível do microfone";
+"Stop call apps from raising your mic level" = "Impede que apps de chamada aumentem o nível do seu mic";
 "Don't switch to a headset mic when it connects" = "Não trocar para o mic do fone quando ele conectar";
 
 /* Apps */
@@ -66,6 +70,7 @@
 "Only Playing Apps" = "Só Apps Tocando";
 "Launch at Login" = "Abrir ao Iniciar";
 "Keep Chosen Microphone" = "Manter Microfone";
+"Lock Microphone Level" = "Travar Nível do Mic";
 "Sound Settings…" = "Ajustes de Som…";
 "Audio Permission…" = "Permissão de Áudio…";
 "Soniq %@ · Developed by Vision Tech" = "Soniq %@ · Desenvolvido por Vision Tech";

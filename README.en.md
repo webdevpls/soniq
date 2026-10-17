@@ -98,12 +98,20 @@ curl -fL -o ~/Downloads/Soniq.dmg https://github.com/webdevpls/soniq/releases/la
 
 In the window that opens, drag **Soniq** into **Applications**.
 
-**From the browser:** download [**Soniq.dmg**](https://github.com/webdevpls/soniq/releases/latest/download/Soniq.dmg). macOS blocks it the first time:
+### Option 3: DMG from the browser
 
-1. When you open it, macOS says *"Soniq.dmg" Not Opened*. Click **Done**.
-2. Go to **System Settings → Privacy & Security**, scroll down and click **Open Anyway** next to Soniq. Confirm with your password.
-3. With the DMG open, drag **Soniq** into **Applications**.
-4. Open Soniq. If the prompt appears again for the app, repeat step 2.
+Download [**Soniq.dmg**](https://github.com/webdevpls/soniq/releases/latest/download/Soniq.dmg). macOS blocks it the first time because the app isn't notarized by Apple yet. To allow it:
+
+1. Open **Soniq.dmg**. You'll see *"Soniq.dmg" Not Opened*. Click **Done** (not "Move to Trash").
+2. Open **System Settings → Privacy & Security** and scroll to the **Security** section.
+3. You'll see *"Soniq.dmg" was blocked to protect your Mac*. Click **Open Anyway** and confirm with your password or Touch ID.
+
+   <img src="docs/screenshots/open-anyway.png" width="560" alt="Privacy & Security: Open Anyway">
+
+4. The DMG opens. Drag **Soniq** into **Applications**.
+5. Open Soniq. If the same prompt appears for the app, repeat steps 2 and 3.
+
+> **Open Anyway** only shows for about an hour after you try to open the file. If it's missing, open the DMG again and go back to Settings.
 
 Soniq lives in the **menu bar**, not in the Dock.
 
@@ -153,9 +161,11 @@ Click the **chevron** next to the volume slider to list every output: built-in s
 
 <img src="docs/screenshots/microphone.png" width="360" align="right" alt="Microphone list">
 
-The second slider is your **microphone level**. Click the mic icon to mute it.
+The second slider is your **microphone level**. To mute it, use the **mute button** next to the slider, click the mic icon or drag it to zero: at zero Soniq turns on the device's real mute, because many mics still pick up sound at their lowest level.
 
 Open its chevron to pick the input device. Turn on **Keep this microphone** to stay on the mic you chose: when headphones with a built-in mic connect, macOS normally switches to them (and Bluetooth headsets drop to call quality). Soniq switches right back.
+
+Turn on **Lock microphone level** (on by default) to keep the level you chose: call apps like Meet, WhatsApp and Zoom often raise the mic volume on their own, and Soniq puts it right back.
 
 > Some inputs, like an iPhone used as a microphone, don't allow their level to be changed. The slider is dimmed for those.
 

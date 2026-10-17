@@ -99,12 +99,20 @@ curl -fL -o ~/Downloads/Soniq.dmg https://github.com/webdevpls/soniq/releases/la
 
 Na janela que abrir, arraste o **Soniq** para **Applications** (Aplicativos).
 
-**Pelo navegador:** baixe o [**Soniq.dmg**](https://github.com/webdevpls/soniq/releases/latest/download/Soniq.dmg). Nesse caso o macOS bloqueia na primeira vez:
+### Opção 3: DMG pelo navegador
 
-1. Ao abrir, o macOS mostra *"Soniq.dmg" não foi aberto*. Clique em **Concluído**.
-2. Vá em **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim** ao lado do Soniq. Confirme com a sua senha.
-3. Com o DMG aberto, arraste o **Soniq** para a pasta **Aplicativos**.
-4. Abra o Soniq. Se o aviso aparecer de novo para o app, repita o passo 2.
+Baixe o [**Soniq.dmg**](https://github.com/webdevpls/soniq/releases/latest/download/Soniq.dmg). Na primeira vez o macOS bloqueia, porque o app ainda não é notarizado pela Apple. Para liberar:
+
+1. Abra o **Soniq.dmg**. Aparece o aviso *"Soniq.dmg" não foi aberto*. Clique em **Concluído** (não em "Mover para o Lixo").
+2. Abra **Ajustes do Sistema → Privacidade e Segurança** e role até a seção **Segurança**.
+3. Vai aparecer *"Soniq.dmg" foi bloqueado para proteger o seu Mac*. Clique em **Abrir Mesmo Assim** e confirme com a sua senha ou o Touch ID.
+
+   <img src="docs/screenshots/open-anyway.png" width="560" alt="Privacidade e Segurança: Abrir Mesmo Assim">
+
+4. O DMG abre. Arraste o **Soniq** para a pasta **Aplicativos** (Applications).
+5. Abra o Soniq. Se o mesmo aviso aparecer para o app, repita os passos 2 e 3.
+
+> O botão **Abrir Mesmo Assim** só aparece por cerca de uma hora depois que você tenta abrir o arquivo. Se não estiver lá, abra o DMG de novo e volte aos Ajustes.
 
 O ícone aparece na **barra de menus**, não no Dock.
 
@@ -154,9 +162,11 @@ Clique na **setinha** ao lado do volume para ver todas as saídas: alto-falantes
 
 <img src="docs/screenshots/microphone.png" width="360" align="right" alt="Lista de microfones">
 
-O segundo controle é o **nível do microfone**. Clique no ícone do mic para silenciá-lo.
+O segundo controle é o **nível do microfone**. Para silenciar, use o botão **🎙︎ mudo** ao lado do controle, clique no ícone do mic ou arraste até o zero: no zero o Soniq liga o mudo de verdade, porque muitos microfones ainda captam som baixinho com o volume no mínimo.
 
 Abra a setinha dele para escolher o microfone. Ligue **Manter este microfone** para continuar no mic que você escolheu: quando um fone com microfone conecta, o macOS normalmente troca para ele (e fones Bluetooth caem para qualidade de ligação). O Soniq volta na hora para o seu.
+
+Ligue **Travar nível do microfone** (vem ligado) para manter o nível que você escolheu: apps de chamada como Meet, WhatsApp e Zoom costumam aumentar o volume do mic sozinhos, e o Soniq volta na hora para o seu valor.
 
 > Algumas entradas, como o iPhone usado como microfone, não permitem mudar o nível. Nesses casos o controle fica apagado.
 

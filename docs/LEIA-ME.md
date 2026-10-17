@@ -25,7 +25,9 @@ Na janela que abrir, arraste o **Soniq** para **Applications**.
 ### Opção 3: DMG pelo navegador
 
 1. Abra o **Soniq.dmg**. O macOS mostra *"não foi aberto"*: clique em **Concluído**.
-2. Vá em **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim**. Confirme com a sua senha.
+2. Vá em **Ajustes do Sistema → Privacidade e Segurança**, role até a seção **Segurança** e clique em **Abrir Mesmo Assim** ao lado de *"Soniq.dmg" foi bloqueado*. Confirme com a sua senha.
+
+   ![Abrir Mesmo Assim](https://raw.githubusercontent.com/webdevpls/soniq/main/docs/screenshots/open-anyway.png)
 3. Abra o DMG de novo e arraste o **Soniq** para **Applications** (Aplicativos).
 4. Abra o Soniq. Se o aviso aparecer para o app, repita o passo 2.
 

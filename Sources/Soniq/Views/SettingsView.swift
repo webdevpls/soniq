@@ -40,6 +40,8 @@ struct SettingsView: View {
                 SettingRow(symbol: "power.circle.fill", title: "Launch at Login", isOn: $model.launchAtLogin)
                 SettingRow(symbol: "lock.fill", title: "Keep Chosen Microphone",
                            isOn: Binding(get: { model.lockInput }, set: model.setLockInput))
+                SettingRow(symbol: "dial.medium.fill", title: "Lock Microphone Level",
+                           isOn: Binding(get: { model.lockInputLevel }, set: model.setLockInputLevel))
                 LinkRow(symbol: "speaker.wave.2.fill", title: "Sound Settings…") {
                     open("x-apple.systempreferences:com.apple.Sound-Settings.extension")
                 }

@@ -38,6 +38,9 @@ final class SoniqModel: ObservableObject {
     /// Keep the chosen mic even when headphones with a mic connect.
     @Published private(set) var lockInput: Bool
     private var preferredInputUID: String?
+    /// Keep the mic level the user chose: call and browser apps raise it with automatic gain control.
+    @Published private(set) var lockInputLevel: Bool
+    private var inputLevels: [String: Float]
 
     // Per app
     @Published private(set) var volumes: [String: Float]
@@ -90,6 +93,8 @@ final class SoniqModel: ObservableObject {
         bass = Float(defaults.double(forKey: "bass"))
         treble = Float(defaults.double(forKey: "treble"))
         lockInput = defaults.bool(forKey: "lockInput")
+        lockInputLevel = defaults.object(forKey: "lockInputLevel") as? Bool ?? true
+        inputLevels = (defaults.dictionary(forKey: "inputLevels") as? [String: Double])?.mapValues(Float.init) ?? [:]
         preferredInputUID = defaults.string(forKey: "preferredInput")
 
         refreshOutput()
@@ -331,7 +336,12 @@ final class SoniqModel: ObservableObject {
             hardwareVolume = 1
             boost = value
         }
-        if outputMuted && value > 0 { AudioSystem.setMuted(false, outputID) }
+        // Volume 0 isn't always silent on every device, so the bottom of the slider mutes too.
+        let silent = value < 0.01
+        if silent != outputMuted {
+            AudioSystem.setMuted(silent, outputID)
+            outputMuted = silent
+        }
         taps.forEach { key, tap in tap.gain = gain(for: key) }
         syncTaps()
         save()
@@ -393,15 +403,35 @@ final class SoniqModel: ObservableObject {
         refreshInput()
     }
 
+    /// Many mics only go down to about -32 dB, so the bottom of the slider also mutes the device.
     func setInputVolume(_ value: Float) {
         guard inputAdjustable else { return }
-        inputVolume = value
-        AudioSystem.setVolume(value, of: inputID, scope: kAudioObjectPropertyScopeInput)
-        if inputMuted && value > 0 { AudioSystem.setMuted(false, inputID, scope: kAudioObjectPropertyScopeInput) }
+        let scope = kAudioObjectPropertyScopeInput
+        let silent = value < 0.01
+        inputVolume = silent ? 0 : value
+        AudioSystem.setVolume(inputVolume, of: inputID, scope: scope)
+        if let uid = input?.uid { inputLevels[uid] = inputVolume }
+        if silent != inputMuted {
+            AudioSystem.setMuted(silent, inputID, scope: scope)
+            inputMuted = silent
+        }
+        save()
+    }
+
+    func setLockInputLevel(_ locked: Bool) {
+        lockInputLevel = locked
+        if locked, let uid = input?.uid, inputLevels[uid] == nil { inputLevels[uid] = inputVolume }
+        save()
     }
 
     func toggleInputMute() {
-        AudioSystem.setMuted(!inputMuted, inputID, scope: kAudioObjectPropertyScopeInput)
+        let scope = kAudioObjectPropertyScopeInput
+        let mute = !inputMuted
+        AudioSystem.setMuted(mute, inputID, scope: scope)
+        // Unmuting from the bottom of the slider would stay silent, so bring the level back up.
+        if !mute && inputVolume < 0.01 && inputAdjustable {
+            AudioSystem.setVolume(0.5, of: inputID, scope: scope)
+        }
         refreshInputLevel()
     }
 
@@ -426,8 +456,20 @@ final class SoniqModel: ObservableObject {
     private func refreshInputLevel() {
         let scope = kAudioObjectPropertyScopeInput
         inputAdjustable = AudioSystem.canSetVolume(of: inputID, scope: scope)
-        inputVolume = AudioSystem.volume(of: inputID, scope: scope) ?? 1
+        let current = AudioSystem.volume(of: inputID, scope: scope) ?? 1
         inputMuted = AudioSystem.isMuted(inputID, scope: scope)
+
+        if lockInputLevel, inputAdjustable, let uid = input?.uid, inputLevels[uid] == nil {
+            inputLevels[uid] = current
+            save()
+        }
+        // Another app changed the level: put the user's choice back.
+        if lockInputLevel, inputAdjustable, let uid = input?.uid, let wanted = inputLevels[uid], abs(current - wanted) > 0.015 {
+            AudioSystem.setVolume(wanted, of: inputID, scope: scope)
+            inputVolume = wanted
+        } else {
+            inputVolume = current
+        }
     }
 
     // MARK: Persistence & login item
@@ -443,6 +485,8 @@ final class SoniqModel: ObservableObject {
         defaults.set(Double(treble), forKey: "treble")
         defaults.set(lockInput, forKey: "lockInput")
         defaults.set(preferredInputUID, forKey: "preferredInput")
+        defaults.set(lockInputLevel, forKey: "lockInputLevel")
+        defaults.set(inputLevels.mapValues(Double.init), forKey: "inputLevels")
     }
 
     private func updateLoginItem() {
