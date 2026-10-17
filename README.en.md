@@ -78,17 +78,28 @@
 
 ## Installation
 
-### Download (recommended)
+### Option 1: one command (easiest)
 
-1. Download **`Soniq-x.y.z.dmg`** (recommended) from the [latest release](https://github.com/webdevpls/soniq/releases/latest).
-2. Open the DMG and drag **Soniq** into **Applications**. (A `.zip` is also available.)
-3. Open Soniq. Its icon appears in the menu bar, not in the Dock.
+Open **Terminal**, paste this line and press Return:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/webdevpls/soniq/main/install.sh | bash
+```
+
+It downloads the latest release, installs Soniq into **Applications** and opens it, without the macOS security prompt. You can [read the script](install.sh) first. Run it again to update.
+
+### Option 2: DMG installer
+
+1. Download **`Soniq-x.y.z.dmg`** from the [latest release](https://github.com/webdevpls/soniq/releases/latest).
+2. When you open it, macOS says *"Soniq-x.y.z.dmg" Not Opened*. Click **Done**.
+3. Go to **System Settings → Privacy & Security**, scroll down and click **Open Anyway** next to Soniq. Confirm with your password.
+4. With the DMG open, drag **Soniq** into **Applications**.
+5. Open Soniq. If the prompt appears again for the app, repeat step 3.
+
+Soniq lives in the **menu bar**, not in the Dock.
 
 > [!NOTE]
-> Soniq isn't notarized by Apple yet, so the first time you open it macOS says it can't verify the developer.
-> Go to **System Settings → Privacy & Security**, scroll down and click **Open Anyway**. You only need to do this once.
->
-> Prefer the terminal? `xattr -dr com.apple.quarantine /Applications/Soniq.app`
+> **Why the warning?** macOS blocks downloaded apps that aren't notarized by Apple, which requires a paid Apple Developer Program membership. Soniq is open source, so you can read every line here. Notarization is on the [roadmap](#roadmap).
 
 ### Build it yourself
 

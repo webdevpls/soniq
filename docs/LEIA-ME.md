@@ -4,19 +4,26 @@
 
 ## Instalação
 
-1. Abra o **Soniq-x.y.z.dmg**.
-2. Arraste o **Soniq** para a pasta **Applications** (Aplicativos) que aparece na janela.
-3. Abra o Soniq pela pasta Aplicativos ou pelo Spotlight (⌘ Espaço → "Soniq"). O ícone aparece na **barra de menus**, no canto superior direito, e não no Dock.
+### Opção 1: um comando (mais fácil)
 
-### "O macOS não pode verificar o desenvolvedor"
+Abra o **Terminal** (⌘ Espaço → "Terminal"), cole e aperte Enter:
 
-O Soniq ainda não é notarizado pela Apple. Na primeira vez:
+```
+curl -fsSL https://raw.githubusercontent.com/webdevpls/soniq/main/install.sh | bash
+```
 
-1. Tente abrir o Soniq e feche o aviso.
-2. Vá em **Ajustes do Sistema → Privacidade e Segurança**.
-3. Role até o fim e clique em **Abrir Mesmo Assim** ao lado do Soniq.
+Pronto: o Soniq é instalado em Aplicativos e abre sozinho, sem aviso de segurança.
 
-Só é preciso fazer isso uma vez. Pelo terminal: `xattr -dr com.apple.quarantine /Applications/Soniq.app`
+### Opção 2: pelo DMG
+
+1. Abra o **Soniq-x.y.z.dmg**. O macOS mostra *"não foi aberto"*: clique em **Concluído**.
+2. Vá em **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim**. Confirme com a sua senha.
+3. Abra o DMG de novo e arraste o **Soniq** para **Applications** (Aplicativos).
+4. Abra o Soniq. Se o aviso aparecer para o app, repita o passo 2.
+
+O ícone aparece na **barra de menus**, no canto superior direito, e não no Dock.
+
+Esse aviso aparece porque o Soniq ainda não é notarizado pela Apple (processo pago). O código é aberto e pode ser conferido no GitHub.
 
 ### Permissão de áudio
 
@@ -36,10 +43,11 @@ Guia completo: https://github.com/webdevpls/soniq
 
 ## English
 
-1. Open **Soniq-x.y.z.dmg** and drag **Soniq** into **Applications**.
-2. Open Soniq. Its icon appears in the **menu bar**, not in the Dock.
-3. If macOS can't verify the developer, go to **System Settings → Privacy & Security** and click **Open Anyway** (once).
-4. Allow **System Audio Recording** the first time you use boost, an effect or per-app volume. Nothing is recorded or stored.
+**Easiest:** paste this in Terminal: `curl -fsSL https://raw.githubusercontent.com/webdevpls/soniq/main/install.sh | bash`
+
+**DMG:** open **Soniq-x.y.z.dmg**. If macOS says it wasn't opened, click **Done**, go to **System Settings → Privacy & Security → Open Anyway**, then drag **Soniq** into **Applications**. Soniq lives in the **menu bar**.
+
+Allow **System Audio Recording** the first time you use boost, an effect or per-app volume. Nothing is recorded or stored.
 
 Requires macOS 14.2 or later · Apple silicon or Intel · Full guide: https://github.com/webdevpls/soniq/blob/main/README.en.md
 

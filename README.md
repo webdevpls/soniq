@@ -79,17 +79,28 @@
 
 ## Instalação
 
-### Download (recomendado)
+### Opção 1: um comando (mais fácil)
 
-1. Baixe o **`Soniq-x.y.z.dmg`** (recomendado) na [última versão](https://github.com/webdevpls/soniq/releases/latest).
-2. Abra o DMG e arraste o **Soniq** para a pasta **Aplicativos**. (Também há um `.zip`, se preferir.)
-3. Abra o Soniq. O ícone aparece na barra de menus, não no Dock.
+Abra o **Terminal** (⌘ Espaço → "Terminal"), cole a linha abaixo e aperte Enter:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/webdevpls/soniq/main/install.sh | bash
+```
+
+O script baixa a última versão, instala o Soniq em **Aplicativos** e abre o app, sem o aviso de segurança do macOS. Você pode [ver o que ele faz](install.sh) antes de rodar. Para atualizar, é só rodar de novo.
+
+### Opção 2: instalador DMG
+
+1. Baixe o **`Soniq-x.y.z.dmg`** na [última versão](https://github.com/webdevpls/soniq/releases/latest).
+2. Ao abrir, o macOS mostra *"Soniq-x.y.z.dmg" não foi aberto*. Clique em **Concluído**.
+3. Vá em **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim** ao lado do Soniq. Confirme com a sua senha.
+4. Com o DMG aberto, arraste o **Soniq** para a pasta **Aplicativos**.
+5. Abra o Soniq. Se o aviso aparecer de novo para o app, repita o passo 3.
+
+O ícone aparece na **barra de menus**, não no Dock.
 
 > [!NOTE]
-> O Soniq ainda não é notarizado pela Apple, então na primeira vez o macOS avisa que não consegue verificar o desenvolvedor.
-> Vá em **Ajustes do Sistema → Privacidade e Segurança**, role até o fim e clique em **Abrir Mesmo Assim**. Isso só é preciso uma vez.
->
-> Prefere o terminal? `xattr -dr com.apple.quarantine /Applications/Soniq.app`
+> **Por que aparece esse aviso?** O macOS bloqueia apps baixados da internet que não foram notarizados pela Apple, um processo pago (Apple Developer Program). O Soniq é open source: você pode ler todo o código aqui. A notarização está nos [próximos passos](#próximos-passos).
 
 ### Compilar você mesmo
 
