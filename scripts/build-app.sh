@@ -17,6 +17,7 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 cp "$BIN" "$APP/Contents/MacOS/Soniq"
 cp Resources/AppIcon.icns Resources/MenuBarIcon.png Resources/BrandMark.png Resources/Wordmark.png "$APP/Contents/Resources/"
 sed "s/__VERSION__/$VERSION/g" Resources/Info.plist > "$APP/Contents/Info.plist"
+cp -R Resources/*.lproj "$APP/Contents/Resources/"
 
 # Prefer a stable identity so macOS keeps the audio permission across builds
 # (see scripts/setup-signing.sh); fall back to ad-hoc signing.

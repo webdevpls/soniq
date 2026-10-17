@@ -1,14 +1,14 @@
 ---
-name: Feature request
-about: Suggest an idea for Soniq
+name: Sugerir recurso
+about: Sugira uma ideia para o Soniq
 labels: enhancement
 ---
 
-**The problem**
-What are you trying to do that Soniq makes hard or impossible?
+**O problema**
+O que você quer fazer que o Soniq dificulta ou não permite?
 
-**Your idea**
-How would you like it to work?
+**Sua ideia**
+Como você gostaria que funcionasse?
 
-**Anything else**
-Screenshots, examples from other apps, links.
+**Mais alguma coisa**
+Prints, exemplos de outros apps, links.

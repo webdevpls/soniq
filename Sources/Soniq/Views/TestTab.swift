@@ -25,7 +25,7 @@ struct TestTab: View {
                     Text(Self.format(tester.frequency))
                 }
                 TestRow(test: .phase, title: "Phase Check", subtitle: "Second half should sound hollow", symbol: "circle.lefthalf.filled") {
-                    Text(tester.inverted ? "Inverted" : "In phase")
+                    Text(L(tester.inverted ? "Inverted" : "In phase"))
                 }
             }
         }
@@ -57,7 +57,7 @@ private struct SideTile: View {
                     .foregroundStyle(active ? Color.black.opacity(0.8) : Color.primary.opacity(0.75))
                     .symbolEffect(.variableColor.iterative, options: .repeating, isActive: active)
                     .symbolEffect(.pulse, options: .repeating, isActive: active)
-                Text(title)
+                Text(L(title))
                     .font(.system(size: 10.5, weight: .semibold))
                     .foregroundStyle(active ? Color.black.opacity(0.7) : Color.secondary)
             }
@@ -93,8 +93,8 @@ private struct TestRow<Readout: View>: View {
                 HStack(spacing: 9) {
                     RoundIcon(symbol: active ? "stop.fill" : symbol, size: 26, active: active)
                     VStack(alignment: .leading, spacing: 1) {
-                        Text(title).font(.system(size: 11.5, weight: .semibold))
-                        Text(subtitle).font(.system(size: 10)).foregroundStyle(.secondary)
+                        Text(L(title)).font(.system(size: 11.5, weight: .semibold))
+                        Text(L(subtitle)).font(.system(size: 10)).foregroundStyle(.secondary)
                     }
                     Spacer(minLength: 0)
                     if active {

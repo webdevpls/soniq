@@ -1,0 +1,80 @@
+/* Soniq — Português (Brasil) */
+
+/* Tabs */
+"Apps" = "Apps";
+"Effects" = "Efeitos";
+"Test" = "Teste";
+
+/* Output & microphone */
+"Output" = "Saída";
+"Boost" = "Boost";
+"Muted" = "Mudo";
+"Microphone" = "Microfone";
+"Output device" = "Dispositivo de saída";
+"Keep this microphone" = "Manter este microfone";
+"Don't switch to a headset mic when it connects" = "Não trocar para o mic do fone quando ele conectar";
+
+/* Apps */
+"Nothing is playing" = "Nada tocando";
+"Left / right balance" = "Balanço esquerda / direita";
+"L" = "E";
+"R" = "D";
+
+/* Permission */
+"Audio access needed" = "Acesso ao áudio necessário";
+"Allow Soniq in System Audio Recording." = "Permita o Soniq em Gravação de Áudio do Sistema.";
+"Allow" = "Permitir";
+
+/* Effects */
+"Off" = "Desligado";
+"Bass Boost" = "Graves+";
+"Party" = "Festa";
+"Underwater" = "Aquário";
+"Concert" = "Show";
+"Next Room" = "Outra Sala";
+"In the Car" = "No Carro";
+"Radio" = "Rádio";
+"3D Wide" = "3D Amplo";
+"Vocal" = "Voz";
+"Night" = "Noite";
+"Cinema" = "Cinema";
+"Intensity" = "Intensidade";
+"Bass" = "Graves";
+"Treble" = "Agudos";
+
+/* Headphone test */
+"Left" = "Esquerdo";
+"Both" = "Ambos";
+"Right" = "Direito";
+"Stereo Sweep" = "Varredura Estéreo";
+"Sound moves left ↔ right" = "O som passa da esquerda ↔ direita";
+"Frequency Range" = "Faixa de Frequência";
+"20 Hz → 20 kHz" = "20 Hz → 20 kHz";
+"Bass Response" = "Resposta de Graves";
+"Deep tones, 25–160 Hz" = "Tons graves, 25–160 Hz";
+"Phase Check" = "Teste de Fase";
+"Second half should sound hollow" = "A segunda metade deve soar oca";
+"Inverted" = "Invertida";
+"In phase" = "Em fase";
+
+/* Settings */
+"Settings" = "Ajustes";
+"Back" = "Voltar";
+"Show in Menu" = "Mostrar no Menu";
+"General" = "Geral";
+"Headphone Test" = "Teste de Fone";
+"Only Playing Apps" = "Só Apps Tocando";
+"Launch at Login" = "Abrir ao Iniciar";
+"Keep Chosen Microphone" = "Manter Microfone";
+"Sound Settings…" = "Ajustes de Som…";
+"Audio Permission…" = "Permissão de Áudio…";
+"Soniq %@ · Developed by Vision Tech" = "Soniq %@ · Desenvolvido por Vision Tech";
+
+/* Footer */
+"Quit Soniq" = "Sair do Soniq";
+
+/* Language */
+"Language" = "Idioma";
+"Automatic" = "Automático";
+"English" = "English";
+"Português" = "Português";

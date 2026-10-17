@@ -22,7 +22,7 @@ struct SettingsView: View {
             HStack(spacing: 8) {
                 RoundButton(symbol: "chevron.left", size: 26, help: "Back", action: onBack)
                     .keyboardShortcut(.cancelAction)
-                Text("Settings")
+                Text(L("Settings"))
                     .font(.system(size: 14, weight: .bold))
             }
             .padding(.horizontal, 2)
@@ -36,6 +36,7 @@ struct SettingsView: View {
             }
 
             section("General") {
+                LanguageRow()
                 SettingRow(symbol: "power.circle.fill", title: "Launch at Login", isOn: $model.launchAtLogin)
                 SettingRow(symbol: "lock.fill", title: "Keep Chosen Microphone",
                            isOn: Binding(get: { model.lockInput }, set: model.setLockInput))
@@ -47,7 +48,7 @@ struct SettingsView: View {
                 }
             }
 
-            Text("Soniq \(Self.version) · Developed by Vision Tech")
+            Text(String(format: L("Soniq %@ · Developed by Vision Tech"), Self.version))
                 .font(.system(size: 9, weight: .medium))
                 .foregroundStyle(.quaternary)
                 .frame(maxWidth: .infinity)
@@ -57,7 +58,7 @@ struct SettingsView: View {
 
     private func section<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(title.uppercased())
+            Text(L(title).uppercased())
                 .font(.system(size: 9.5, weight: .bold))
                 .tracking(0.5)
                 .foregroundStyle(.tertiary)
@@ -81,7 +82,7 @@ private struct SettingRow: View {
     var body: some View {
         HStack(spacing: 9) {
             RoundIcon(symbol: symbol, size: 24, active: isOn)
-            Text(title).font(.system(size: 12))
+            Text(L(title)).font(.system(size: 12))
             Spacer()
             Toggle("", isOn: $isOn)
                 .toggleStyle(.switch)
@@ -106,7 +107,7 @@ private struct LinkRow: View {
         Button(action: action) {
             HStack(spacing: 9) {
                 RoundIcon(symbol: symbol, size: 24)
-                Text(title).font(.system(size: 12))
+                Text(L(title)).font(.system(size: 12))
                 Spacer()
                 Image(systemName: "arrow.up.right")
                     .font(.system(size: 9, weight: .bold))
@@ -119,5 +120,43 @@ private struct LinkRow: View {
         }
         .buttonStyle(.plain)
         .onHover { hovering = $0 }
+    }
+}
+
+private struct LanguageRow: View {
+    @AppStorage(AppLanguage.key) private var language = "system"
+
+    var body: some View {
+        HStack(spacing: 9) {
+            RoundIcon(symbol: "globe", size: 24)
+            Text(L("Language")).font(.system(size: 12))
+            Spacer()
+            Menu {
+                ForEach(AppLanguage.options, id: \.code) { option in
+                    Button {
+                        language = option.code
+                    } label: {
+                        if option.code == language {
+                            Label(L(option.name), systemImage: "checkmark")
+                        } else {
+                            Text(L(option.name))
+                        }
+                    }
+                }
+            } label: {
+                HStack(spacing: 3) {
+                    Text(L(AppLanguage.options.first { $0.code == language }?.name ?? "Automatic"))
+                    Image(systemName: "chevron.up.chevron.down").font(.system(size: 8, weight: .bold))
+                }
+                .font(.system(size: 11, weight: .medium))
+                .foregroundStyle(.secondary)
+            }
+            .menuStyle(.button)
+            .buttonStyle(.plain)
+            .menuIndicator(.hidden)
+            .fixedSize()
+        }
+        .padding(.horizontal, 4)
+        .padding(.vertical, 2)
     }
 }

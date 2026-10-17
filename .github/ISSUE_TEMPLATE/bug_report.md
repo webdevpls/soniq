@@ -1,24 +1,24 @@
 ---
-name: Bug report
-about: Something isn't working as expected
+name: Relatar bug
+about: Algo não está funcionando como deveria
 labels: bug
 ---
 
-**What happened**
+**O que aconteceu**
 
 
-**What you expected**
+**O que você esperava**
 
 
-**Steps to reproduce**
+**Como reproduzir**
 1.
 2.
 
-**Environment**
-- Soniq version:
-- macOS version:
+**Ambiente**
+- Versão do Soniq:
+- Versão do macOS:
 - Mac (Apple silicon / Intel):
-- Output device:
-- Affected app (if any):
+- Dispositivo de saída:
+- App afetado (se houver):
 
-**Logs** (optional, see CONTRIBUTING.md)
+**Logs** (opcional, veja o CONTRIBUTING.md)

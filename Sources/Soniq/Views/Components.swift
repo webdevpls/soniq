@@ -147,11 +147,11 @@ struct MixerSlider<Leading: View>: View {
 
     private var labels: some View {
         HStack(spacing: 6) {
-            Text(title)
+            Text(L(title))
                 .font(.system(size: 12, weight: .semibold))
                 .lineLimit(1)
             Spacer(minLength: 4)
-            Text(detail)
+            Text(L(detail))
                 .font(.system(size: 11, weight: .semibold).monospacedDigit())
                 .opacity(0.75)
                 .contentTransition(.numericText())
@@ -204,9 +204,9 @@ struct CenterSlider: View {
             ZStack(alignment: .leading) {
                 Capsule().fill(Theme.track(colorScheme))
                 HStack {
-                    Text(leftLabel)
+                    Text(L(leftLabel))
                     Spacer()
-                    Text(rightLabel)
+                    Text(L(rightLabel))
                 }
                 .font(.system(size: 9, weight: .bold))
                 .foregroundStyle(.tertiary)
@@ -297,7 +297,7 @@ struct RoundButton: View {
         }
         .buttonStyle(.plain)
         .onHover { hovering = $0 }
-        .help(help)
+        .help(L(help))
     }
 }
 

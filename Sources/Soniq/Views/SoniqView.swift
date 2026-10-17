@@ -30,6 +30,7 @@ struct SoniqView: View {
     @AppStorage(PanelSettings.showMic) private var showMic = true
     @AppStorage(PanelSettings.showEffects) private var showEffects = true
     @AppStorage(PanelSettings.showTest) private var showTest = true
+    @AppStorage(AppLanguage.key) private var language = "system"
 
     private var tabs: [Tab] {
         Tab.allCases.filter { ($0 != .effects || showEffects) && ($0 != .test || showTest) }
@@ -65,6 +66,7 @@ struct SoniqView: View {
         .background(AmbientBackground())
         .animation(.snappy(duration: 0.28), value: tab)
         .animation(.snappy(duration: 0.3), value: showSettings)
+        .id(language)
     }
 
     // MARK: Output & mic
@@ -116,7 +118,7 @@ struct SoniqView: View {
                 VStack(spacing: 2) {
                     DeviceList(devices: model.inputs, selected: model.inputID, symbol: { $0.inputSymbol }, select: model.selectInput)
                     HStack {
-                        Text("Keep this microphone")
+                        Text(L("Keep this microphone"))
                             .font(.system(size: 11.5))
                         Spacer()
                         Toggle("", isOn: Binding(get: { model.lockInput }, set: model.setLockInput))
@@ -126,7 +128,7 @@ struct SoniqView: View {
                     }
                     .padding(.horizontal, 8)
                     .padding(.vertical, 3)
-                    .help("Don't switch to a headset mic when it connects")
+                    .help(L("Don't switch to a headset mic when it connects"))
                 }
             }
             }
@@ -154,7 +156,7 @@ struct SoniqView: View {
                 } label: {
                     HStack(spacing: 4) {
                         Image(systemName: item.symbol).font(.system(size: 10, weight: .semibold))
-                        Text(item.title).font(.system(size: 11.5, weight: .semibold))
+                        Text(L(item.title)).font(.system(size: 11.5, weight: .semibold))
                     }
                     .foregroundStyle(selected ? Color.primary : Color.secondary)
                     .frame(maxWidth: .infinity)
@@ -201,11 +203,11 @@ private struct PermissionBanner: View {
                 .font(.system(size: 14))
                 .foregroundStyle(LinearGradient(gradient: Theme.warm, startPoint: .top, endPoint: .bottom))
             VStack(alignment: .leading, spacing: 1) {
-                Text("Audio access needed").font(.system(size: 11.5, weight: .semibold))
-                Text("Allow Soniq in System Audio Recording.").font(.system(size: 10)).foregroundStyle(.secondary)
+                Text(L("Audio access needed")).font(.system(size: 11.5, weight: .semibold))
+                Text(L("Allow Soniq in System Audio Recording.")).font(.system(size: 10)).foregroundStyle(.secondary)
             }
             Spacer(minLength: 0)
-            Button("Allow") { model.requestPermission() }
+            Button(L("Allow")) { model.requestPermission() }
                 .buttonStyle(.plain)
                 .font(.system(size: 11, weight: .semibold))
                 .foregroundStyle(.white)
@@ -235,7 +237,7 @@ private struct AppsTab: View {
                     Image(systemName: "waveform")
                         .font(.system(size: 18, weight: .medium))
                         .foregroundStyle(.tertiary)
-                    Text("Nothing is playing")
+                    Text(L("Nothing is playing"))
                         .font(.system(size: 11.5, weight: .medium))
                         .foregroundStyle(.secondary)
                 }
@@ -356,10 +358,10 @@ private struct ToneRow: View {
 
     var body: some View {
         HStack(spacing: 8) {
-            Text(title)
+            Text(L(title))
                 .font(.system(size: 10.5, weight: .semibold))
                 .foregroundStyle(.secondary)
-                .frame(width: 40, alignment: .leading)
+                .frame(width: 48, alignment: .leading)
             CenterSlider(value: Binding(get: { value / range }, set: { set($0 * range) }), leftLabel: "−", rightLabel: "+")
             Text(value == 0 ? "0 dB" : String(format: "%+.0f dB", value))
                 .font(.system(size: 10, weight: .medium).monospacedDigit())
@@ -384,7 +386,7 @@ private struct EffectTile: View {
                     .foregroundStyle(selected ? Color.white : Color.primary.opacity(0.75))
                     .shadow(color: selected ? .black.opacity(0.2) : .clear, radius: 1, y: 0.5)
                     .symbolEffect(.bounce, value: selected)
-                Text(effect.name)
+                Text(L(effect.name))
                     .font(.system(size: 9, weight: .semibold))
                     .foregroundStyle(selected ? Color.white.opacity(0.95) : Color.secondary)
                     .lineLimit(1)
